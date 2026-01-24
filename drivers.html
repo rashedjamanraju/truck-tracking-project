@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Driver Management</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sidebar.css">
+
+<style>
+/* Page Content Layout */
+.content {
+    margin-left: 240px;
+    padding: 30px;
+    background: #f5f6ff;
+    min-height: 100vh;
+}
+
+/* Page Title */
+.page-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* Card Style */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    margin-top: 20px;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input,
+.form-group select {
+    width:97%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.add-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Table */
+.driver-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.driver-table th,
+.driver-table td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.driver-table th {
+    background: #f0f3ff;
+}
+
+/* Action Buttons */
+.edit-btn {
+    background: #ffd966;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.delete-btn {
+    background: #ff6b6b;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* Responsive */
+@media(max-width: 900px){
+    .sidebar { display:none; }
+    .content { margin-left: 0; }
+}
+</style>
+
+</head>
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">🚚 Tracker</div>
+        <div class="menu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="live-tracking.html">Live Tracking</a>
+            <a href="trip-history.html">Trip History</a>
+            <a href="alerts.html">Alerts</a>
+            <a href="vehicles.html">Vehicles</a>
+            <a class="active" href="drivers.html">Drivers</a>
+            <a href="settings.html">Settings</a>
+            <a href="logout.html">Logout</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <div class="page-title">Driver Management</div>
+        <p style="color:#666;">Add and manage your drivers</p>
+
+        <!-- Add Driver Form -->
+        <div class="card">
+            <h4>Add New Driver</h4>
+
+            <div class="form-group">
+                <label>Driver Name</label>
+                <input type="text" id="driverName" placeholder="John Doe">
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="text" id="driverPhone" placeholder="+8801XXXXXXXXX">
+            </div>
+
+            <div class="form-group">
+                <label>Assigned Vehicle</label>
+                <select id="driverVehicle">
+                    <option value="">Select Vehicle</option>
+                    <option>Car - DHAKA 1234</option>
+                    <option>Truck - CTG 5678</option>
+                    <option>Bike - SYL 2468</option>
+                </select>
+            </div>
+
+            <button class="add-btn" onclick="addDriver()">Add Driver</button>
+        </div>
+
+        <!-- Driver List -->
+        <div class="card">
+            <h4>Registered Drivers</h4>
+
+            <table class="driver-table" id="driverTable">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Assigned Vehicle</th>
+                    <th>Actions</th>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function addDriver() {
+    const name = document.getElementById("driverName").value.trim();
+    const phone = document.getElementById("driverPhone").value.trim();
+    const vehicle = document.getElementById("driverVehicle").value;
+
+    if(name === "" || phone === "" || vehicle === "") {
+        alert("Please fill all fields!");
+        return;
+    }
+
+    const table = document.getElementById("driverTable");
+    const row = table.insertRow(-1);
+
+    row.innerHTML = `
+        <td>${name}</td>
+        <td>${phone}</td>
+        <td>${vehicle}</td>
+        <td>
+            <button class="edit-btn" onclick="editDriver(this)">Edit</button>
+            <button class="delete-btn" onclick="deleteDriver(this)">Delete</button>
+        </td>
+    `;
+
+    // Clear form
+    document.getElementById("driverName").value = "";
+    document.getElementById("driverPhone").value = "";
+    document.getElementById("driverVehicle").value = "";
+}
+
+function deleteDriver(btn) {
+    const row = btn.parentNode.parentNode;
+    row.remove();
+}
+
+function editDriver(btn) {
+    const row = btn.parentNode.parentNode;
+    const cells = row.getElementsByTagName("td");
+
+    document.getElementById("driverName").value = cells[0].innerText;
+    document.getElementById("driverPhone").value = cells[1].innerText;
+    document.getElementById("driverVehicle").value = cells[2].innerText;
+
+    row.remove(); 
+}
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vehicle Tracker - Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sidebar.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6fb;
+}
+
+/* Layout */
+.dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+
+
+.sidebar h2 {
+    margin: 0 0 30px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* Sidebar Links */
+.nav-item {
+    display: block;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    transition: background 0.3s;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.nav-item.active {
+    background: rgba(255,255,255,0.35);
+}
+
+/* Main Content */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    background: white;
+    padding: 15px 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.user {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Content Area */
+.content {
+    display: flex;
+    flex: 1;
+}
+
+/* Vehicle List */
+.vehicle-list {
+    width: 280px;
+    background: white;
+    padding: 20px;
+    border-right: 1px solid #eee;
+    overflow-y: auto;
+}
+
+.vehicle-list h4 {
+    margin-top: 0;
+    font-size: 16px;
+}
+
+.vehicle-item {
+    background: #f4f6fb;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.vehicle-item:hover {
+    background: #e0e7ff;
+}
+
+.vehicle-item strong {
+    display: block;
+    font-size: 14px;
+}
+
+.vehicle-item span {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Map Area */
+.map-area {
+    flex: 1;
+    background: #dbeafe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Responsive */
+@media(max-width: 768px){
+    .sidebar {
+        display: none;
+    }
+    .vehicle-list {
+        width: auto;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+    .content {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+    <div class="logo">🚚 Tracker</div>
+    <div class="menu">
+            <a class="active" href="dashboard.html">Dashboard</a>
+            <a href="live-tracking.html">Live Tracking</a>
+            <a href="trip-history.html">Trip History</a>
+            <a href="alerts.html">Alerts</a>
+            <a href="vehicles.html">Vehicles</a>
+            <a href="drivers.html">Drivers</a>
+            <a href="settings.html">Settings</a>
+            <a href="logout.html">Logout</a>
+        </div>
+</div>
+
+
+    <!-- Main -->
+    <div class="main">
+
+        <!-- Header -->
+        <div class="header">
+            <h3>Dashboard</h3>
+            <div class="user">Welcome, John Doe</div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+
+            <!-- Vehicle List -->
+            <div class="vehicle-list">
+                <h4>Your Vehicles</h4>
+
+                <div class="vehicle-item">
+                    <strong>Car - DHAKA 1234</strong>
+                    <span>Status: Online</span>
+                </div>
+
+                <div class="vehicle-item">
+                    <strong>Truck - CTG 5678</strong>
+                    <span>Status: Offline</span>
+                </div>
+
+                <div class="vehicle-item">
+                    <strong>Bike - SYL 2468</strong>
+                    <span>Status: Online</span>
+                </div>
+            </div>
+
+            <!-- Map Area -->
+            <div class="map-area">
+                🗺 Live Map Will Display Here
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

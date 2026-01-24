@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vehicle Management</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sidebar.css">
+
+<style>
+/* Page Content Layout */
+.content {
+    margin-left: 240px;
+    padding: 30px;
+    background: #f5f6ff;
+    min-height: 100vh;
+}
+
+/* Page Title */
+.page-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* Card Style */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    margin-top: 20px;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.add-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Vehicle List Table */
+.vehicle-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.vehicle-table th,
+.vehicle-table td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.vehicle-table th {
+    background: #f0f3ff;
+}
+
+/* Action Buttons */
+.edit-btn {
+    background: #ffd966;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.delete-btn {
+    background: #ff6b6b;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* Responsive */
+@media(max-width: 900px){
+    .sidebar { display:none; }
+    .content { margin-left: 0; }
+}
+</style>
+
+</head>
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">🚚 Tracker</div>
+        <div class="menu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="live-tracking.html">Live Tracking</a>
+            <a href="trip-history.html">Trip History</a>
+            <a href="alerts.html">Alerts</a>
+            <a class="active" href="vehicles.html">Vehicles</a>
+            <a href="drivers.html">Drivers</a>
+            <a href="settings.html">Settings</a>
+            <a href="logout.html">Logout</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <div class="page-title">Vehicle Management</div>
+        <p style="color:#666;">Add and manage your vehicles</p>
+
+        <!-- Add Vehicle Form -->
+        <div class="card">
+            <h4>Add New Vehicle</h4>
+
+            <div class="form-group">
+                <label>Vehicle Name</label>
+                <input type="text" placeholder="Car / Truck / Bike">
+            </div>
+
+            <div class="form-group">
+                <label>Plate Number</label>
+                <input type="text" placeholder="DHAKA 1234">
+            </div>
+
+            <div class="form-group">
+                <label>Vehicle Type</label>
+                <select>
+                    <option>Select Type</option>
+                    <option>Car</option>
+                    <option>Truck</option>
+                    <option>Bike</option>
+                    <option>Bus</option>
+                </select>
+            </div>
+
+            <button class="add-btn">Add Vehicle</button>
+        </div>
+
+        <!-- Vehicle List -->
+        <div class="card">
+            <h4>Registered Vehicles</h4>
+
+            <table class="vehicle-table">
+                <tr>
+                    <th>Vehicle Name</th>
+                    <th>Plate</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+
+                <tr>
+                    <td>Car</td>
+                    <td>DHAKA 1234</td>
+                    <td>Car</td>
+                    <td>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Truck</td>
+                    <td>CTG 5678</td>
+                    <td>Truck</td>
+                    <td>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Bike</td>
+                    <td>SYL 2468</td>
+                    <td>Bike</td>
+                    <td>
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
